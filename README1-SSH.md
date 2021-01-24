@@ -17,6 +17,24 @@ lastlog
 ```bash
 lastb -n 20
 ```
+## Upload SSH Key dari Putty
+copy pub key dari puttygen, 
+paste ke file authorized_keys
+```bash
+mkdir ~/.ssh
+cd ~/.ssh
+nano authorized_keys
+```
+## Upload SSH Key dari Linux PC Local
+Generate dulu
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+```
+Upload ke server yg mau diremote
+```bash
+ssh-copy-id root@ip_remote
+```
+
 ## =========================
 ## SSH KEY - Disable password on login ===
 ## =========================
