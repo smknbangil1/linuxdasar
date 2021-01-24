@@ -17,3 +17,19 @@ lastlog
 ```bash
 lastb -n 20
 ```
+## =========================
+## SSH KEY - Disable password on login ===
+## =========================
+```bash
+nano /etc/ssh/sshd_config
+```
+Cari directive berikut dan modifikasi seperti berikut:
+```bash
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+```
+Kemudian simpan dan restart service SSH
+```bash
+systemctl restart ssh
+```
