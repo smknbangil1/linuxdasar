@@ -30,6 +30,10 @@ Generate dulu
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
 ```
+## Melihat/menampilkan key
+```bash
+cat ~/.ssh/id_rsa.pub
+```
 Upload ke server yg mau diremote
 ```bash
 ssh-copy-id root@ip_remote
