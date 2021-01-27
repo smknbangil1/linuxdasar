@@ -29,7 +29,7 @@ lastlog
 ```bash
 lastb -n 20
 ```
-## Upload SSH Key dari Putty
+## Upload SSH Key dari Putty (berlaku di centos dan ubuntu)
 copy pub key dari puttygen, 
 paste ke file authorized_keys
 ```bash
