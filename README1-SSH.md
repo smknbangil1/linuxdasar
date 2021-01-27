@@ -1,6 +1,18 @@
-# linux dasar
-dasar-dasar command line di linux
-## SSH
+# SSH di Centos 7
+membaca log autenkasi sshd 20 baris terakhir
+```bash
+tail -20 /var/log/secure
+```
+melihat user yg gagal masuk
+```bash
+grep "Invalid user" /var/log/secure
+```
+melihat yg user yg berhasil login ssh
+```bash
+grep "Accepted" /var/log/secure
+```
+
+## SSH di ubuntu
 ### Melihat log ssh
 ```bash
 tail -20 /var/log/auth.log | grep ssh
