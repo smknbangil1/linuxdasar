@@ -4,3 +4,5 @@ dasar-dasar command line di linux
 ```bash
 nano /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
+perintah dan pengaturan ssh
+[a relative link](README1-SSH.md)
