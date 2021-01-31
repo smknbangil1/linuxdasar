@@ -27,7 +27,7 @@ contoh 2:
 scp -r /foldernya/moodledata/ root@IP_ServerB:/tujuan/moodledata
 ```
 contoh 3, dengan port selian default 22
-``bash
+```bash
 scp -P 9922 -r /foldernya/moodledata/ root@IP_ServerB:/tujuan/moodledata
 scp -P 2322 /users/Edward/desktop/scp.zip root@191.162.0.2:/writing/article
 ```
