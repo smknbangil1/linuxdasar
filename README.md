@@ -12,7 +12,7 @@ systemctl restart network
 ## perintah dan pengaturan ssh
 [a relative link](README1-SSH.md)
 
-## Transfer File/Folder
+## Transfer File/Folder menggunakan SCP
 contoh1:
 ```bash
 scp /root/.ssh/id_rsa root@IP_ServerB:/root/.ssh/
@@ -30,4 +30,9 @@ contoh 3, dengan port selian default 22
 ```bash
 scp -P 9922 -r /foldernya/moodledata/ root@IP_ServerB:/tujuan/moodledata
 scp -P 2322 /users/Edward/desktop/scp.zip root@191.162.0.2:/writing/article
+```
+
+## Singkronisasi File dan FOlder menggunakan rsync
+```bash
+rsync -rv /folder/asal/moodledata/ root@103.150.60.251:/folder/tujuan/moodledata/
 ```
