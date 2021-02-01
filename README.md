@@ -1,5 +1,11 @@
 # linuxdasar
 dasar-dasar command line di linux
+
+## mengubah timezone
+```bash
+timedatectl set-timezone Asia/Jakarta
+```
+
 ## edit ip/network di centos 7
 ```bash
 nano /etc/sysconfig/network-scripts/ifcfg-eth0
