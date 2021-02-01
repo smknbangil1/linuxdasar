@@ -16,9 +16,9 @@ systemctl restart network
 ```
 
 ## perintah dan pengaturan ssh
-[a relative link SSH](README1-SSH.md)
-[a relative link TMUX](TMUX.md)
-https://github.com/smknbangil1/linuxdasar/blob/main/TMUX.md
+[setting SSH Key](README1-SSH.md)
+
+[cara TMUX](TMUX.md)
 
 ## Transfer File/Folder menggunakan SCP
 contoh1:
