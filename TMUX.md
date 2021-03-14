@@ -22,6 +22,11 @@ atau, diberi nama sesi
 tmux new -s [session_name] 
 tmux new -s backup-database
 ```
+
+kembali ke sesi tertentu
+```bash
+tmux attach -t namasesinya
+```
 ## backup database
 ```bash
  mysqldump -u root -p namadb_nya > database.sql
