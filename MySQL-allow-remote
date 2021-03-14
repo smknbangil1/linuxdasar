@@ -1,2 +1,0 @@
-buka/edit file konfigurasi my.ini atau my.cnf
-Geser kebawah sampai anda menemukan bagian [mysqld] dan hilangkan simbol komentar (#) di awal kode – kode dibawah:
