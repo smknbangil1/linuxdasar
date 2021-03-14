@@ -22,7 +22,10 @@ atau, diberi nama sesi
 tmux new -s [session_name] 
 tmux new -s backup-database
 ```
-
+melihat beberapa sesi yang aktif
+```bach
+tmux ls 
+```
 kembali ke sesi tertentu
 ```bash
 tmux attach -t namasesinya
