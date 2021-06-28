@@ -8,7 +8,7 @@ cek size per directory
 du -sh /* | sort -n -r
 ```
 
-cek free space 
+cek free memory dan swap 
 ```bash
 free -h
 ```
