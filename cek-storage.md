@@ -7,3 +7,8 @@ cek size per directory
 ```bash
 du -sh /* | sort -n -r
 ```
+
+cek free space 
+```bash
+free -h
+```
