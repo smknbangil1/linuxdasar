@@ -1,0 +1,40 @@
+Amankan akses ssh dengan rsa key pada sistem operasi linux
+
+# ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+
+Next:
+- download pakai winscp: id_rsa
+- import key pakai putty key gen
+- copy rsa public_key ke notepad, simpan dalam bentuk file .txt
+- simpan rsa private_key dalam bentuk file .ppk
+
+Menyalin rsa public_key ke authorized_keys
+-buka dan copy file public_key .txt
+Next:
+# cd ~/.ssh
+# nano authorized_keys
+paste dan simpan, exit dari nano editor
+
+Ubah permission hak akses isi folder .ssh
+# chmod -R 600 .ssh/
+# chmod 700 .ssh
+
+Pengaturan sshd_config
+# nano /etc/ssh/sshd_config
+
+PermitRootLogin yes
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM no
+simpan, 
+
+kemudian restart service ssh
+# systemctl restart ssh
+
+done, and next.. login as root from putty
+
+jika lebih dari server, ingin pakai rsa key yg sama
+copy folder .ssh/ dan isinya ke server berikutnya
+# scp -r /root/.ssh/ root@10.10.10.2:/root/.ssh/
+
+ubah permission dan sshd_config seperti diatas
