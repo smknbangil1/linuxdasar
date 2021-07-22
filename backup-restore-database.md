@@ -9,3 +9,7 @@ mysql -uroot -p
 USE namadatabasenya;
 SOURCE /foldernya/namafile-yg-akan-di-import.sql;
 ```
+# Cara membuat database moodle
+```bash
+CREATE DATABASE moodledb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
