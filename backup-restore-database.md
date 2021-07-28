@@ -3,6 +3,11 @@
 mysqldump -u root -p namadb > nama-file-backupnya.sql
 ```
 
+# extract .sql.gz
+```bash 
+gzip -d example.sql.gz
+```
+
 # Cara Restore Database
 ```bash
 mysql -uroot -p
