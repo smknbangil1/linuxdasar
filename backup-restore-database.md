@@ -18,3 +18,7 @@ SOURCE /foldernya/namafile-yg-akan-di-import.sql;
 ```bash
 CREATE DATABASE moodledb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
+# Cara melihat user dan hak akses ke database
+```bash
+SELECT db, host, user FROM mysql.db;
+```
