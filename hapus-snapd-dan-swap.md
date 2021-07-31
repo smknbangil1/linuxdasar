@@ -27,6 +27,14 @@ next, set to 10 or 0
 ```
 sysctl vm.swappiness=0
 ```
+edit sysctl.com
+```
+nano /etc/sysctl.conf
+```
+tambahin bari ini :
+```
+vm.swappiness = 0
+```
 next, melihat ukuran partisi swap
 ```
 free -h
