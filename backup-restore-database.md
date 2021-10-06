@@ -14,6 +14,10 @@ mysql -uroot -p
 USE namadatabasenya;
 SOURCE /foldernya/namafile-yg-akan-di-import.sql;
 ```
+# Convert character dan collation ke utf8mb4_general_ci
+```bash
+SELECT CONCAT('ALTER TABLE ', tbl.TABLE_SCHEMA, '.', tbl.TABLE_NAME, ' CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;') FROM information_schema.TABLES tbl WHERE tbl.TABLE_SCHEMA = 'digilearn'
+```
 # Cara membuat database moodle
 ```bash
 CREATE DATABASE moodledb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
