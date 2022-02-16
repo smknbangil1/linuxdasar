@@ -6,3 +6,7 @@ php patch/moodle/admin/cli/maintenance.php --enable
 ```bash
 max_input_vars = 5000
 ```
+### cronjob moodle
+```bash
+* * * * * /usr/bin/php /var/www/moodle/admin/cli/cron.php >/dev/null 2>&1
+```
