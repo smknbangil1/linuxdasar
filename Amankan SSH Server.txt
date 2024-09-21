@@ -1,6 +1,18 @@
 Amankan akses ssh dengan rsa key pada sistem operasi linux
 
-# ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+# Membuat RSA Versi 1, untuk ubuntu 20.04 dan 18.04
+ssh-keygen -t rsa -b 4096 
+atau gini: ssh-keygen -t rsa -b 4096 -C "your_email@domain.com"
+
+# Membuat ECDSA
+ssh-keygen -t ed25519
+atau gini: ssh-keygen -t ed25519 -C "your@email.com"
+
+# Membuat RSA Versi 2
+# untuk ubuntu 22.04 dan 24.04
+
+ssh-keygen -t rsa-sha2-512 -b 4096
+atau gini: ssh-keygen -t rsa-sha2-512 -b 4096 -C "your@email.com"
 
 Next:
 - download pakai winscp: id_rsa
@@ -26,8 +38,8 @@ PermitRootLogin yes
 PasswordAuthentication no
 ChallengeResponseAuthentication no
 UsePAM no
+Protocol 2, 1
 simpan, 
-
 kemudian restart service ssh
 # systemctl restart ssh
 
@@ -38,3 +50,11 @@ copy folder .ssh/ dan isinya ke server berikutnya
 # scp -r /root/.ssh/ root@10.10.10.2:/root/.ssh/
 
 ubah permission dan sshd_config seperti diatas
+
+# Membuat ECDSA
+ssh-keygen -t ed25519 -C "your@email.com"
+
+# Membuat RSA Versi 2
+# untuk ubuntu 22.04 dan 24.04
+
+ssh-keygen -t rsa-sha2-512 -b 4096
