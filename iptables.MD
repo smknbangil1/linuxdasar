@@ -79,7 +79,8 @@ sudo iptables -L FORWARD -v -n
 
 Dengan konfigurasi ini, semua trafik ke IP `141.11.17.243:9001` akan diarahkan ke IP `10.123.0.2:8291`.
 #
-## membuat nat dst-addresst nya dimasquerade
+#
+## membuat nat masquerade spy client terhubung ke internet
 Berikut adalah langkah-langkah untuk membuat address-list untuk IP private (`192.168.0.0/16`, `172.16.0.0/12`, `10.0.0.0/8`) dan NAT masquerade di iptables pada Ubuntu 22.04:
 
 ---
@@ -164,3 +165,68 @@ Pastikan trafik NAT masquerade bekerja dengan benar. Anda bisa menguji dengan:
 ### Catatan
 - Jika Anda memiliki banyak subnet private yang perlu NAT, gunakan address range secara langsung di aturan `MASQUERADE` tanpa perlu membuat chain tambahan untuk menghemat langkah.
 - `MASQUERADE` digunakan untuk mengganti source IP dengan IP publik dari interface keluar (misalnya `eth0`), cocok untuk koneksi dinamis (seperti DHCP).
+
+#
+#
+## dst-addres dibikin masquerade
+Untuk membuat aturan NAT **masquerade** di iptables untuk destination address (`dst-address`) **10.0.0.0/8**, gunakan langkah-langkah berikut:
+
+---
+
+### 1. **Tambahkan Aturan NAT di iptables**
+Aturan NAT Masquerade harus diterapkan pada table `nat` di chain `POSTROUTING`. Gunakan perintah berikut:
+
+```bash
+sudo iptables -t nat -A POSTROUTING -d 10.0.0.0/8 -j MASQUERADE
+```
+
+Aturan ini akan melakukan masquerading pada trafik yang menuju destination address `10.0.0.0/8`.
+
+---
+
+### 2. **Verifikasi Aturan NAT**
+Untuk memastikan aturan berhasil diterapkan, gunakan perintah berikut:
+
+```bash
+sudo iptables -t nat -L POSTROUTING -v -n
+```
+
+Anda akan melihat aturan dengan `-d 10.0.0.0/8` dan target `MASQUERADE`.
+
+---
+
+### 3. **Simpan Aturan**
+Agar aturan NAT ini tetap berlaku setelah reboot, Anda perlu menyimpannya:
+
+#### a. Install iptables-persistent (jika belum diinstal)
+```bash
+sudo apt update
+sudo apt install iptables-persistent -y
+```
+
+#### b. Simpan Aturan NAT
+Gunakan perintah berikut untuk menyimpan aturan iptables secara permanen:
+
+```bash
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+```
+
+Aturan akan disimpan di:
+- IPv4: `/etc/iptables/rules.v4`
+- IPv6: `/etc/iptables/rules.v6`
+
+---
+
+### 4. **Testing Aturan**
+Untuk menguji apakah aturan bekerja:
+1. Kirim trafik ke salah satu IP dalam rentang `10.0.0.0/8`.
+2. Pastikan source address dari trafik yang keluar diubah (dimasking) menjadi IP dari interface keluar (misalnya `eth0`).
+
+---
+
+### Penjelasan
+- `-t nat`: Menargetkan table NAT untuk aturan yang mengubah header paket.
+- `-A POSTROUTING`: Memastikan perubahan dilakukan setelah routing diputuskan.
+- `-d 10.0.0.0/8`: Berlaku hanya untuk paket yang menuju ke destination range ini.
+- `-j MASQUERADE`: Menginstruksikan iptables untuk menyamarkan source IP menjadi IP interface keluar.
